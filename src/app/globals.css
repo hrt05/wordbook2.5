@@ -3,6 +3,32 @@
   --foreground: #171717;
 }
 
+:root[data-theme="light"] {
+  /* Button のデフォルト背景（surface3）を公式トークンに紐づける */
+  --charcoal-surface3: var(--charcoal-color-container-neutral-default);
+  --charcoal-surface3-hover: var(--charcoal-color-container-neutral-hover);
+  --charcoal-surface3-press: var(--charcoal-color-container-neutral-press);
+
+  /* Primary ボタン用ブランド色 */
+  --charcoal-brand: var(--charcoal-color-container-primary-default);
+  --charcoal-brand-hover: var(--charcoal-color-container-primary-hover);
+  --charcoal-brand-press: var(--charcoal-color-container-primary-press);
+
+  /* Danger ボタン用（ネガティブ系） */
+  --charcoal-assertive: var(--charcoal-color-container-negative-default);
+  --charcoal-assertive-hover: var(--charcoal-color-container-negative-hover);
+  --charcoal-assertive-press: var(--charcoal-color-container-negative-press);
+
+  /* テキスト用 */
+  --charcoal-text2: var(--charcoal-color-text-default);
+  --charcoal-text2-hover: var(--charcoal-color-text-hover);
+  --charcoal-text2-press: var(--charcoal-color-text-press);
+
+  --charcoal-text5: var(--charcoal-color-text-on-primary-default);
+  --charcoal-text5-hover: var(--charcoal-color-text-on-primary-hover);
+  --charcoal-text5-press: var(--charcoal-color-text-on-primary-press);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { CharcoalProvider } from "@charcoal-ui/react";
+
+import "@charcoal-ui/theme/unstable-css/_variables_light.css";
+import "@charcoal-ui/react/dist/index.css";
+import "@charcoal-ui/react/dist/layered.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,9 +28,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" data-theme="light">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+        <CharcoalProvider>{children}</CharcoalProvider>
       </body>
     </html>
   );
