@@ -9,6 +9,7 @@ import { auth } from "@/lib/firebase/firebase";
 const signUp = async (email: string, password: string) => {
   try {
     await createUserWithEmailAndPassword(auth, email, password);
+    console.log("登録完了" ,createUserWithEmailAndPassword);
   } catch (e) {
     if (e instanceof FirebaseError) console.log(e);
   }
