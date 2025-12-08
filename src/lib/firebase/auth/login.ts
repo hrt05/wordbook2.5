@@ -4,7 +4,8 @@ import { FirebaseError } from "firebase/app";
 
 const login = async (email: string, password: string) => {
   try {
-    await signInWithEmailAndPassword(auth, email, password);
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const token = await userCredential.user.getIdToken();
     console.log("ログイン完了", signInWithEmailAndPassword);
   } catch (e) {
     if (e instanceof FirebaseError) console.log(e);
