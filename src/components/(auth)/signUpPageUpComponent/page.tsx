@@ -4,13 +4,17 @@ import { Button, TextField } from "@charcoal-ui/react";
 import styles from "./signUpComponent.module.css";
 import { useState } from "react";
 import signUp from "@/lib/firebase/auth/signUp";
+import { useRouter } from "next/navigation";
 
 const SignUpPageComponent = () => {
+  const router = useRouter()
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    await signUp(email, password);
+    const ok = await signUp(email, password);
+    if(ok) router.push("/")
   };
 
   return (
