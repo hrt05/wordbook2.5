@@ -13,8 +13,8 @@ const SignUpPageComponent = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    const ok = await signUp(email, password);
-    if(ok) router.push("/")
+    const success = await signUp(email, password);
+    if(success) router.push("/")
   };
 
   return (
