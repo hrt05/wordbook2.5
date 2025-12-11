@@ -7,6 +7,8 @@ const login = async (email: string, password: string) => {
 
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const token = await userCredential.user.getIdToken();
+
+    console.log(token)
     console.log("ログイン完了", signInWithEmailAndPassword);
 
     await signInWithEmailAndPassword(auth, email, password);
