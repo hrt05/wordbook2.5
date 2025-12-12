@@ -13,8 +13,13 @@ const LoginPageComponent = () => {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async () => {
-    const ok = await login(email, password);
-    if(ok) router.push("/")
+    const result = await login(email, password);
+    if(result?.success && result?.token) 
+      {
+        localStorage.setItem("auth-token", result.token)
+        console.log("ログインページでトークンを保存しました",result.token)
+        router.push("/")
+      }
   };
 
   return (
