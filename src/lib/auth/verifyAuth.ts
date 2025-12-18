@@ -6,19 +6,19 @@ export async function verifyAuth(request: NextRequest) {
         // Authorizationヘッダーを取得
         const authHeader = request.headers.get("Authorization");
 
-        if (!authHeader || !authHeader.startsWith("Bearer")) {
+        if (!authHeader || !authHeader.startsWith("Bearer ")) {
             throw new Error("認証トークンがありません");
         }
 
         // Bearerを取り除く // 上でBearerがあることが確保された状態
-        const token = authHeader.replace("Bearer", "");
+        const token = authHeader.replace("Bearer ", "");
 
         // Firebase Admin SDKでトークンを検証 verifyIdTokenが IdTokenを確認するという意味
-        const decodeToken = await adminAuth.verifyIdToken(token);
+        const decodedToken = await adminAuth.verifyIdToken(token);
 
-        console.log("認証成功", {userId: decodeToken.uid, email: decodeToken.email});
+        console.log("認証成功", { userId: decodedToken.uid, email: decodedToken.email });
 
-        return decodeToken;
+        return decodedToken;
 
     } catch (error) {
         console.error("トークン検証エラー:", error);
@@ -38,6 +38,16 @@ export async function verifyAuth(request: NextRequest) {
             throw new Error("認証に失敗しました");
 
         }
-
     }
+
+}
+// ユーザーIDだけを取得する簡易版
+export async function getUserId(request: NextRequest): Promise<string> {
+    const decodedToken = await verifyAuth(request);
+
+    if (!decodedToken) {
+        throw new Error("認証に失敗しました")
+    }
+
+    return decodedToken.uid;
 }
