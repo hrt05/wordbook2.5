@@ -19,3 +19,6 @@ if (!admin.apps.length) {
         console.error("Firebaseの初期化に失敗しました", error);
     }
 }
+
+export const adminAuth = admin.auth();
+export default admin;
