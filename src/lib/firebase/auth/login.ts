@@ -12,7 +12,11 @@ const login = async (email: string, password: string) => {
     console.log(token)
     console.log("ログイン完了", signInWithEmailAndPassword);
 
-    await signInWithEmailAndPassword(auth, email, password);
+
+    // ここ消したけどいらんよな
+    // await signInWithEmailAndPassword(auth, email, password);
+
+
     // console.log("ログイン完了", signInWithEmailAndPassword);
     alert("ログインが成功しました。")
     return { success:true, token:token }
